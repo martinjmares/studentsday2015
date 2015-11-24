@@ -14,8 +14,8 @@ public class TwitterApp extends Application {
 
     private final Set singletons = new HashSet<>();
 
-    public TwitterApp() {
-        singletons.add(new TwitterResource(latch));
+    public TwitterApp(Main main) {
+        singletons.add(new TwitterResource(latch, main));
     }
 
     public CountDownLatch getLatch() {
