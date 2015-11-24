@@ -2,6 +2,7 @@ package oldscotch.velve;
 
 import java.util.concurrent.CountDownLatch;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -26,6 +27,7 @@ public class VelveResource {
     }
 
     @Path("tweet")
+    @Consumes("text/plain")
     @POST
     public void tweet(@QueryParam("user") @DefaultValue("unspecified") String user, String message) {
         System.out.println(user + ": " + message);

@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -30,6 +31,7 @@ import twitter4j.StatusAdapter;
 public class Main extends StatusAdapter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+    public static final ExecutorService EXECUTOR_SERVICE = Executors.newCachedThreadPool();
 
     private final int port;
     private final List<TweetListener> listeners = new ArrayList<>();
@@ -65,10 +67,10 @@ public class Main extends StatusAdapter {
         final BlockingQueue<String> queue = new LinkedBlockingQueue<>(10000);
 
         final Authentication auth = new OAuth1(
-                props.getProperty("twitter.consumer.key"),
                 props.getProperty("twitter.consumer.secret"),
-                props.getProperty("twitter.token.key"),
-                props.getProperty("twitter.token.secret"));
+                props.getProperty("twitter.consumer.key"),
+                props.getProperty("twitter.token.secret"),
+                props.getProperty("twitter.token.key"));
 
         List<String> keyList = new ArrayList<>(1);
         keyList.add(keyword);
@@ -93,7 +95,7 @@ public class Main extends StatusAdapter {
 
     public void fireMessage(String author, String message) {
         for (TweetListener listener : listeners) {
-            listener.message(author, message);
+            EXECUTOR_SERVICE.submit(() -> listener.message(author, message));
         }
     }
 

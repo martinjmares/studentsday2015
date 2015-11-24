@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 public class VelvePi implements Runnable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(VelvePi.class);
-    private static final long OPEN_ITERVAL = 1000l;
+    private static final long OPEN_ITERVAL = 2000l;
 
     private final AtomicInteger openCount = new AtomicInteger(0);
     private final AtomicBoolean stop = new AtomicBoolean(false);
@@ -53,7 +53,8 @@ public class VelvePi implements Runnable {
     }
 
     public void add() {
-        openCount.incrementAndGet();
+        int size = openCount.incrementAndGet();
+        LOGGER.info("Swigs: " + size);
         synchronized (this) {
             notify();
         }

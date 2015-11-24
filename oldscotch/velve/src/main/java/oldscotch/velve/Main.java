@@ -23,7 +23,7 @@ public class Main {
     private void run() throws Exception {
         final VelveApp app = new VelveApp(initVelve);
         final ResourceConfig resourceConfig = ResourceConfig.forApplication(app);
-        final URI uri = URI.create("http://localhost:3333/");
+        final URI uri = URI.create("http://192.168.1.150:3333/");
         final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(uri, resourceConfig);
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override
