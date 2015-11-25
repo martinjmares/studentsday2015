@@ -1,0 +1,1 @@
+curl -X POST -H "Content-Type:text/plain" -d "$1" http://localhost:4444/tweet

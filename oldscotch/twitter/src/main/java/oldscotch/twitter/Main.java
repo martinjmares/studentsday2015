@@ -36,12 +36,18 @@ public class Main extends StatusAdapter {
     private final int port;
     private final List<TweetListener> listeners = new ArrayList<>();
     private volatile Twitter4jStatusClient client;
+    private final BroadcasterListener broadcasterListener = new BroadcasterListener();
 
     public Main(int port) {
         LOGGER.info("Port is " + port);
         this.port = port;
         listeners.add(new FwdToVelve());
         listeners.add(new LoggingListener());
+        listeners.add(broadcasterListener);
+    }
+
+    BroadcasterListener getBroadcasterListener() {
+        return broadcasterListener;
     }
 
     private void run() throws Exception {
