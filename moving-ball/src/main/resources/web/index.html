@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Jersey Monitoring sample</title>
+
+    <link rel="stylesheet" href="css/demo.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rickshaw/1.5.1/rickshaw.min.css"/>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/demo.js"></script>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-3">
+            <div id="alerts">
+
+            </div>
+            <div id="current" class="panel panel-default">
+                <div class="panel-heading">Current user:</div>
+                <div id="currentUser">
+
+                </div>
+            </div>
+            <div id="queue" class="panel panel-default">
+                <div class="panel-heading">Users in queue:</div>
+                <div id="queuedUsers">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9 col-md-9">
+            <div id="userRegistration" class="row">
+                <form action="">
+                    <label for="userName">Name</label>
+                    <input id="userName" type="text"/>
+                    <button type="button" onclick="registerUser()" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div id="controls" style="display: none" class="row">
+                <div class="progress">
+                    <div id="progressbar" class="progress-bar" style="width:0%">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-md-4"></div>
+                    <div class="col-sm-4 col-md-4">
+                        <button id="upButton" class="btn btn-primary disabled btn-block">UP
+                        </button>
+                    </div>
+                    <div class="col-sm-4 col-md-4"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-md-4">
+                        <button id="leftButton" class="btn btn-primary disabled btn-block">
+                            LEFT
+                        </button>
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <button id="requestSlotButton" onclick="requestSlot()" class="btn btn-primary btn-block">Request slot
+                        </button>
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <button id="rightButton" class="btn btn-primary disabled btn-block">
+                            RIGHT
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-md-4"></div>
+                    <div class="col-sm-4 col-md-4">
+                        <button id="downButton" class="btn btn-primary disabled btn-block">
+                            DOWN
+                        </button>
+                    </div>
+                    <div class="col-sm-4 col-md-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
